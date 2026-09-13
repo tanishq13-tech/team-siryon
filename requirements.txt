@@ -1,0 +1,7 @@
+# IBVAP Surveillance - Python Dependencies
+# SIH 2026 Problem Statement - AI Video Analytics Platform
+
+opencv-python>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+Flask>=2.3.0

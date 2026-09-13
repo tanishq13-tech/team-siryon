@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBVAP - SQL Database Visual Control Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #e2e8f0; min-height: 100vh; padding: 25px; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #1e293b; }
+        h1 { font-size: 1.6rem; color: #38bdf8; display: flex; align-items: center; gap: 12px; }
+        .badge { background: #0284c7; color: #fff; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; font-weight: bold; }
+        
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .metric-card { background: #1e293b; padding: 18px; border-radius: 8px; border: 1px solid #334155; }
+        .metric-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric-value { font-size: 1.6rem; font-weight: bold; color: #f8fafc; margin-top: 6px; }
+        .metric-sub { font-size: 0.75rem; color: #38bdf8; margin-top: 4px; }
+        
+        .section-title { font-size: 1.2rem; color: #f8fafc; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .db-card { background: #1e293b; border-radius: 10px; border: 1px solid #334155; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .db-card-header { background: #0f172a; padding: 12px 18px; font-weight: bold; color: #38bdf8; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+        .db-card-body { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+        
+        .photo-preview-container { display: flex; gap: 12px; background: #090d16; padding: 10px; border-radius: 6px; border: 1px solid #334155; }
+        .photo-box { flex: 1; text-align: center; }
+        .photo-box img { width: 100%; height: 110px; object-fit: cover; border-radius: 4px; border: 1px solid #475569; }
+        .photo-box span { font-size: 0.75rem; color: #cbd5e1; display: block; margin-top: 4px; }
+        
+        .field-row { display: flex; justify-content: space-between; font-size: 0.88rem; padding: 4px 0; border-bottom: 1px dashed #334155; }
+        .field-name { color: #94a3b8; }
+        .field-val { color: #4ade80; font-weight: 600; font-family: monospace; }
+        
+        table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 8px; overflow: hidden; border: 1px solid #334155; }
+        th, td { padding: 12px 15px; text-align: left; font-size: 0.85rem; border-bottom: 1px solid #334155; }
+        th { background: #0f172a; color: #38bdf8; font-weight: 600; }
+        tr:hover { background: #1b263b; }
+        .tag { padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .tag-red { background: #9f1239; color: #fecdd3; }
+        .tag-green { background: #166534; color: #bbf7d0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛡️ IBVAP <span class="badge">SQL DATABASE VISUAL DASHBOARD</span></h1>
+        <div>Live Backend Storage Verification Center</div>
+    </header>
+
+    <!-- Top Metrics Row -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-label">DATABASE SIZE</div>
+            <div class="metric-value" style="color: #4ade80;">72.0 KB</div>
+            <div class="metric-sub">Ultra-Lightweight Storage</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">VEHICLES & ANPR PLATES</div>
+            <div class="metric-value">1 Record</div>
+            <div class="metric-sub">Track #102 | PB08-X-9988</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">PERSON & FRS MATCHES</div>
+            <div class="metric-value">1 Record</div>
+            <div class="metric-sub">Track #42 | Intruder Alpha</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">24-HOUR VIDEO ARCHIVES</div>
+            <div class="metric-value">1 Recording</div>
+            <div class="metric-sub">65.2 MB Continuous Feed</div>
+        </div>
+    </div>
+
+    <!-- Main Visual Cards Grid -->
+    <div class="section-title">📊 LIVE DATABASE RECORD CARDS & PHOTO CROPS</div>
+
+    <div class="data-grid">
+        <!-- Vehicle & ANPR Record Card -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <span>🚗 VEHICLE_DETECTIONS TABLE</span>
+                <span class="tag tag-green">AUTO-SAVED</span>
+            </div>
+            <div class="db-card-body">
+                <div class="field-row">
+                    <span class="field-name">Vehicle Track ID</span>
+                    <span class="field-val">#102</span>
+                </div>
+                <div class="field-row">
+                    <span class="field-name">ANPR License Plate</span>
+                    <span class="field-val" style="color: #facc15;">PB08-X-9988</span>
+                </div>
+                <div class="field-row">
+                    <span class="field-name">Vehicle Classification</span>
+                    <span class="field-val">SUV (Patrol Vehicle)</span>
+                </div>
+                <div class="field-row">
+                    <span class="field-name">Frame Index</span>
+                    <span class="field-val">Frame #120</span>
+                </div>
+                
+                <div class="photo-preview-container">
+                    <div class="photo-box">
+                        <img src="media/snapshots/veh_track_102_frame120.jpg" alt="Vehicle Crop" onerror="this.src='https://via.placeholder.com/150x110/1e293b/38bdf8?text=Vehicle+Crop'">
+                        <span>Vehicle Crop</span>
+                    </div>
+                    <div class="photo-box">
+                        <img src="media/snapshots/plate_pb08x9988_frame120.jpg" alt="ANPR Plate Crop" onerror="this.src='https://via.placeholder.com/150x110/1e293b/facc15?text=ANPR+Plate+Crop'">
+                        <span>ANPR Plate Crop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person & FRS Record Card -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <span>👤 PERSON_DETECTIONS TABLE</span>
+                <span class="tag tag-red">SUSPECT MATCH</span>
+            </div>
+            <div class="db-card-body">
+                <div class="field-row">
+                    <span class="field-name">Person Track ID</span>
+                    <span class="field-val">#42</span>
+                </div>
+                <div class="field-row">
+                    <span class="field-name">FRS Suspect Match</span>
+                    <span class="field-val" style="color: #f43f5e;">Intruder Alpha</span>
+                </div>
+                <div class="field-row">
+                    <span class="field-name">Behavior Tag</span>
+                    <span class="field-val">INSPECTING_CHECKPOST</span>
+                </div>
+                <div class="field-row">
+                    <span class="field-name">Frame Index</span>
+                    <span class="field-val">Frame #180</span>
+                </div>
+
+                <div class="photo-preview-container">
+                    <div class="photo-box">
+                        <img src="media/snapshots/person_track_42_frame180.jpg" alt="Person Crop" onerror="this.src='https://via.placeholder.com/150x110/1e293b/4ade80?text=Person+Crop'">
+                        <span>Person Crop</span>
+                    </div>
+                    <div class="photo-box">
+                        <img src="media/snapshots/face_track_42_frame180.jpg" alt="Face FRS Crop" onerror="this.src='https://via.placeholder.com/150x110/1e293b/f43f5e?text=Face+FRS+Crop'">
+                        <span>Face FRS Crop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SQL Table Preview -->
+    <div class="section-title">🗄️ SQL DATABASE TABLE RECORD DETAILS</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Table Name</th>
+                <th>Track ID</th>
+                <th>Detected Entity</th>
+                <th>Stored Photo Path</th>
+                <th>Timestamp</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>vehicle_detections</code></td>
+                <td>#102</td>
+                <td>ANPR Plate: <strong>PB08-X-9988</strong></td>
+                <td><code>media/snapshots/plate_pb08x9988_frame120.jpg</code></td>
+                <td>2026-09-04 21:05:00</td>
+                <td><span class="tag tag-green">STORED</span></td>
+            </tr>
+            <tr>
+                <td><code>person_detections</code></td>
+                <td>#42</td>
+                <td>FRS Match: <strong>Intruder Alpha</strong></td>
+                <td><code>media/snapshots/face_track_42_frame180.jpg</code></td>
+                <td>2026-09-04 21:05:00</td>
+                <td><span class="tag tag-red">MATCHED</span></td>
+            </tr>
+            <tr>
+                <td><code>video_recordings</code></td>
+                <td>N/A</td>
+                <td>24-Hour Continuous MP4 (65.2 MB)</td>
+                <td><code>border_checkpost_raw_feed.mp4</code></td>
+                <td>2026-09-04 00:00:00</td>
+                <td><span class="tag tag-green">LINKED</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

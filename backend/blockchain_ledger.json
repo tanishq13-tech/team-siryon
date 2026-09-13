@@ -1,0 +1,525 @@
+[
+  {
+    "block_index": 0,
+    "timestamp": "2026-09-10T14:45:24.000Z",
+    "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "merkle_root": "bcd9592ea81af785e7eaa8f6a6019f08c737881ddd2cef97ca25c67631bfe5df",
+    "block_hash": "d2305087dc493234e6cf4c196268c0af9e30160fc6a718d3c4d0d077ca15fc9f",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-GENESIS-BOP-SEC4",
+        "stream_type": "GENESIS_NODE_INITIALIZATION",
+        "source_node": "BOP_SECTOR_4",
+        "payload_sha256": "bcd9592ea81af785e7eaa8f6a6019f08c737881ddd2cef97ca25c67631bfe5df",
+        "timestamp": "2026-09-01T00:00:00.000Z",
+        "status": "VALIDATED"
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 1,
+    "timestamp": "2026-09-10T14:45:24.000Z",
+    "previous_hash": "d2305087dc493234e6cf4c196268c0af9e30160fc6a718d3c4d0d077ca15fc9f",
+    "merkle_root": "d473536c933e0333952153c10f128731e9c6c8fdbf0a350d72940f5d03eb7d0c",
+    "block_hash": "66eb3d448ec65cbb552eae5276fcb070a4daae82090cfd753830c056e3c9f2de",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00001-d28d83bd",
+        "stream_type": "ALERT_P1",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 19,
+        "payload_sha256": "d473536c933e0333952153c10f128731e9c6c8fdbf0a350d72940f5d03eb7d0c",
+        "timestamp": "2026-09-10T14:45:24.000Z",
+        "extra_metadata": {}
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 2,
+    "timestamp": "2026-09-10T14:48:07.000Z",
+    "previous_hash": "66eb3d448ec65cbb552eae5276fcb070a4daae82090cfd753830c056e3c9f2de",
+    "merkle_root": "3857492d8e18c99fdfd36d40d59c53f056d5a07ff9ca4686d4d7a1cc6e42c080",
+    "block_hash": "e70b60c993cf5ad46119de2b21b98cb645f7f1e3f1e0b61d29b58f1eeb5c44c9",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00002-274a744b",
+        "stream_type": "ALERT_P1",
+        "source_node": "BOP_TEST",
+        "payload_bytes": 37,
+        "payload_sha256": "3857492d8e18c99fdfd36d40d59c53f056d5a07ff9ca4686d4d7a1cc6e42c080",
+        "timestamp": "2026-09-10T14:48:07.000Z",
+        "extra_metadata": {}
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 3,
+    "timestamp": "2026-09-10T14:48:19.000Z",
+    "previous_hash": "e70b60c993cf5ad46119de2b21b98cb645f7f1e3f1e0b61d29b58f1eeb5c44c9",
+    "merkle_root": "3857492d8e18c99fdfd36d40d59c53f056d5a07ff9ca4686d4d7a1cc6e42c080",
+    "block_hash": "878ac188feedda1fe5f72adb5948740e2dc4d584f42d27c279e2f3eaab636f0d",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00003-274a744b",
+        "stream_type": "ALERT_P1",
+        "source_node": "BOP_TEST",
+        "payload_bytes": 37,
+        "payload_sha256": "3857492d8e18c99fdfd36d40d59c53f056d5a07ff9ca4686d4d7a1cc6e42c080",
+        "timestamp": "2026-09-10T14:48:19.000Z",
+        "extra_metadata": {}
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 4,
+    "timestamp": "2026-09-10T14:52:15.000Z",
+    "previous_hash": "878ac188feedda1fe5f72adb5948740e2dc4d584f42d27c279e2f3eaab636f0d",
+    "merkle_root": "8f1cb487fcf9ede1fe48ba705b71f74d47e68ed627df07b263f49412622380be",
+    "block_hash": "ce65bc5ffe59debdacdf76f8de1a95e615a4346daa1fcaad7dbf3e857b175cfe",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00004-2df5056e",
+        "stream_type": "ALERT_P1",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 36,
+        "payload_sha256": "8f1cb487fcf9ede1fe48ba705b71f74d47e68ed627df07b263f49412622380be",
+        "timestamp": "2026-09-10T14:52:15.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/alert",
+          "headers": {
+            "X-Original-Bytes": "217"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 5,
+    "timestamp": "2026-09-10T14:52:17.000Z",
+    "previous_hash": "ce65bc5ffe59debdacdf76f8de1a95e615a4346daa1fcaad7dbf3e857b175cfe",
+    "merkle_root": "674698ea018ffe470325d1ce48964ba7b0457fbf6d5825524008bcddcbff9b55",
+    "block_hash": "f5f396e8de84257ce98f9e6b2535bff736978eaa95d96334b817b11c3716eaf5",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00005-21181e75",
+        "stream_type": "METADATA_P2",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 1764,
+        "payload_sha256": "674698ea018ffe470325d1ce48964ba7b0457fbf6d5825524008bcddcbff9b55",
+        "timestamp": "2026-09-10T14:52:17.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/metadata",
+          "headers": {
+            "X-Original-Bytes": "73867"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 6,
+    "timestamp": "2026-09-10T14:52:20.000Z",
+    "previous_hash": "f5f396e8de84257ce98f9e6b2535bff736978eaa95d96334b817b11c3716eaf5",
+    "merkle_root": "0a8e73e9b5289d36fa78a55eb465f6c71037905fc6d3ee8fd5712f3f9d806b0e",
+    "block_hash": "587ba818c3e1ebc5dbb442d684d78624bf184c974048cf3db9c6ed516d450908",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00006-33bfdb20",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 104,
+        "payload_sha256": "0a8e73e9b5289d36fa78a55eb465f6c71037905fc6d3ee8fd5712f3f9d806b0e",
+        "timestamp": "2026-09-10T14:52:20.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "866",
+            "X-Filename": "face_track_42_frame180.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 7,
+    "timestamp": "2026-09-10T14:52:22.000Z",
+    "previous_hash": "587ba818c3e1ebc5dbb442d684d78624bf184c974048cf3db9c6ed516d450908",
+    "merkle_root": "7ebd84a51034778195f1ca7e57c33df54d0d6d05d380a9ebe0cee414d0247c32",
+    "block_hash": "e52ace61cdbe284b3d8d87476e54df012b33adbc408cd38c5046234aee9a817f",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00007-189100bd",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 166,
+        "payload_sha256": "7ebd84a51034778195f1ca7e57c33df54d0d6d05d380a9ebe0cee414d0247c32",
+        "timestamp": "2026-09-10T14:52:22.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "1606",
+            "X-Filename": "person_track_42_frame180.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 8,
+    "timestamp": "2026-09-10T14:52:24.000Z",
+    "previous_hash": "e52ace61cdbe284b3d8d87476e54df012b33adbc408cd38c5046234aee9a817f",
+    "merkle_root": "12118f52413daa32a78ab57c41cbfed67981690beae47403751fd69641b9a0b5",
+    "block_hash": "769feaf3789e68dce647b63bd278bfc56844e13c4a77c1da722102e6d7dd31f0",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00008-9563c5f7",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 240,
+        "payload_sha256": "12118f52413daa32a78ab57c41cbfed67981690beae47403751fd69641b9a0b5",
+        "timestamp": "2026-09-10T14:52:24.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "1650",
+            "X-Filename": "plate_pb08x9988_frame120.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 9,
+    "timestamp": "2026-09-10T14:52:26.000Z",
+    "previous_hash": "769feaf3789e68dce647b63bd278bfc56844e13c4a77c1da722102e6d7dd31f0",
+    "merkle_root": "0deb497ef6023ddacb83a9b11a71d589372a1f142be8cf9b1a3f31973221fc68",
+    "block_hash": "6b790d0a3718082d9c25731b295813f315396d78b441de5cc8c03c83168756e9",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00009-17f84f02",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 1442,
+        "payload_sha256": "0deb497ef6023ddacb83a9b11a71d589372a1f142be8cf9b1a3f31973221fc68",
+        "timestamp": "2026-09-10T14:52:26.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "10730",
+            "X-Filename": "veh_track_102_frame120.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 10,
+    "timestamp": "2026-09-10T14:52:29.000Z",
+    "previous_hash": "6b790d0a3718082d9c25731b295813f315396d78b441de5cc8c03c83168756e9",
+    "merkle_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "block_hash": "7d604e6879e1f1078d2c292c8fc67de0bf75b445b9045a0ae33adfe6474a1d70",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00010-cd372fb8",
+        "stream_type": "VIDEO_P4",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 0,
+        "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-09-10T14:52:29.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/video",
+          "headers": {
+            "X-Original-Bytes": "118700150",
+            "X-Filename": "event_incident_clip.mp4"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 11,
+    "timestamp": "2026-09-10T14:52:58.000Z",
+    "previous_hash": "7d604e6879e1f1078d2c292c8fc67de0bf75b445b9045a0ae33adfe6474a1d70",
+    "merkle_root": "3857492d8e18c99fdfd36d40d59c53f056d5a07ff9ca4686d4d7a1cc6e42c080",
+    "block_hash": "d6de09df14024aee2f8dbcf3088db5f7b938f5ed41b04376ead3a8bea4366767",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00011-274a744b",
+        "stream_type": "ALERT_P1",
+        "source_node": "BOP_TEST",
+        "payload_bytes": 37,
+        "payload_sha256": "3857492d8e18c99fdfd36d40d59c53f056d5a07ff9ca4686d4d7a1cc6e42c080",
+        "timestamp": "2026-09-10T14:52:58.000Z",
+        "extra_metadata": {}
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 12,
+    "timestamp": "2026-09-10T14:53:18.000Z",
+    "previous_hash": "d6de09df14024aee2f8dbcf3088db5f7b938f5ed41b04376ead3a8bea4366767",
+    "merkle_root": "49c83ee5eb169a1bcc3e60de2562e0f5a2759ed7de589448ab2d848d5bce8f53",
+    "block_hash": "343f25c13adff60284fd41e8dcd91a00bfb2f68fbbb037d15883ebb21aef2cfa",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00012-c830d73f",
+        "stream_type": "ALERT_P1",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 36,
+        "payload_sha256": "49c83ee5eb169a1bcc3e60de2562e0f5a2759ed7de589448ab2d848d5bce8f53",
+        "timestamp": "2026-09-10T14:53:18.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/alert",
+          "headers": {
+            "X-Original-Bytes": "217"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 13,
+    "timestamp": "2026-09-10T14:53:20.000Z",
+    "previous_hash": "343f25c13adff60284fd41e8dcd91a00bfb2f68fbbb037d15883ebb21aef2cfa",
+    "merkle_root": "674698ea018ffe470325d1ce48964ba7b0457fbf6d5825524008bcddcbff9b55",
+    "block_hash": "b4e1b32f6c695cb04b89ae72070892125837560c0f2d9893b244e4172d4cbb61",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00013-21181e75",
+        "stream_type": "METADATA_P2",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 1764,
+        "payload_sha256": "674698ea018ffe470325d1ce48964ba7b0457fbf6d5825524008bcddcbff9b55",
+        "timestamp": "2026-09-10T14:53:20.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/metadata",
+          "headers": {
+            "X-Original-Bytes": "73867"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 14,
+    "timestamp": "2026-09-10T14:53:22.000Z",
+    "previous_hash": "b4e1b32f6c695cb04b89ae72070892125837560c0f2d9893b244e4172d4cbb61",
+    "merkle_root": "0a8e73e9b5289d36fa78a55eb465f6c71037905fc6d3ee8fd5712f3f9d806b0e",
+    "block_hash": "c3ac5202f668f13bc1577e305173c0dce801560b9ed55bd2eb29ce0b41e41a02",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00014-33bfdb20",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 104,
+        "payload_sha256": "0a8e73e9b5289d36fa78a55eb465f6c71037905fc6d3ee8fd5712f3f9d806b0e",
+        "timestamp": "2026-09-10T14:53:22.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "866",
+            "X-Filename": "face_track_42_frame180.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 15,
+    "timestamp": "2026-09-10T14:53:24.000Z",
+    "previous_hash": "c3ac5202f668f13bc1577e305173c0dce801560b9ed55bd2eb29ce0b41e41a02",
+    "merkle_root": "7ebd84a51034778195f1ca7e57c33df54d0d6d05d380a9ebe0cee414d0247c32",
+    "block_hash": "bc6d9ba033dcfd1f44e0b656f0c98ed2cac64ff8cd77b03e8b9fe8540824f572",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00015-189100bd",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 166,
+        "payload_sha256": "7ebd84a51034778195f1ca7e57c33df54d0d6d05d380a9ebe0cee414d0247c32",
+        "timestamp": "2026-09-10T14:53:24.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "1606",
+            "X-Filename": "person_track_42_frame180.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 16,
+    "timestamp": "2026-09-10T14:53:27.000Z",
+    "previous_hash": "bc6d9ba033dcfd1f44e0b656f0c98ed2cac64ff8cd77b03e8b9fe8540824f572",
+    "merkle_root": "12118f52413daa32a78ab57c41cbfed67981690beae47403751fd69641b9a0b5",
+    "block_hash": "26cfda0f8d4fdc15ec50160d6f0ac1351f9f951be0f7cc30e5277304bf9d305c",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00016-9563c5f7",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 240,
+        "payload_sha256": "12118f52413daa32a78ab57c41cbfed67981690beae47403751fd69641b9a0b5",
+        "timestamp": "2026-09-10T14:53:27.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "1650",
+            "X-Filename": "plate_pb08x9988_frame120.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  },
+  {
+    "block_index": 17,
+    "timestamp": "2026-09-10T14:53:29.000Z",
+    "previous_hash": "26cfda0f8d4fdc15ec50160d6f0ac1351f9f951be0f7cc30e5277304bf9d305c",
+    "merkle_root": "0deb497ef6023ddacb83a9b11a71d589372a1f142be8cf9b1a3f31973221fc68",
+    "block_hash": "b1fe6475bd1f09f92f7d4e064cac73e297ea918694c283491edbf9a65520383f",
+    "transaction_count": 1,
+    "transactions": [
+      {
+        "tx_id": "TX-00017-17f84f02",
+        "stream_type": "SNAPSHOT_P3",
+        "source_node": "BOP_SECTOR_4",
+        "payload_bytes": 1442,
+        "payload_sha256": "0deb497ef6023ddacb83a9b11a71d589372a1f142be8cf9b1a3f31973221fc68",
+        "timestamp": "2026-09-10T14:53:29.000Z",
+        "extra_metadata": {
+          "endpoint": "/api/ingest/snapshot",
+          "headers": {
+            "X-Original-Bytes": "10730",
+            "X-Filename": "veh_track_102_frame120.webp"
+          }
+        }
+      }
+    ],
+    "hyperledger_metadata": {
+      "channel_id": "border-surveillance-channel",
+      "chaincode_id": "ibvap_audit_cc",
+      "endorser_msp": "BSF_Sector4_MSP",
+      "signature_algorithm": "SHA256withECDSA"
+    }
+  }
+]
