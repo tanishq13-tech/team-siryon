@@ -1,0 +1,2 @@
+frame,timestamp,vehicle_id,vehicle_type,plate_number,ocr_confidence
+1,0.04,2,truck,JKO2DA7007,0.863
