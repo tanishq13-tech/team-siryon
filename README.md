@@ -1,6 +1,6 @@
 # Intelligent Border Video Analytics Platform (IBVAP)
 ### Multi-Modal Surveillance Data Compression & Cloud Synchronization Engine
-**Smart India Hackathon (SIH 187)**
+**Smart India Hackathon (SIH 26187)**
 
 ---
 
