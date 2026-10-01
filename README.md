@@ -1,120 +1,336 @@
-# Intelligent Border Video Analytics Platform (IBVAP)
-### Multi-Modal Surveillance Data Compression & Cloud Synchronization Engine
-**Smart India Hackathon (SIH 26187)**
+# 🛡️ Intelligent Border Video Analytics Platform (IBVAP)
+
+An intelligent, edge-first border monitoring system that combines **CCTV cameras, radar, AI-based object tracking, behavioral analysis, and secure cloud storage** to detect and record suspicious activities in real time.
+
+The system is designed to continue monitoring even during temporary sensor or network interruptions by maintaining a **persistent local buffer** and asynchronously replicating stored data to the cloud.
 
 ---
 
-## 📌 Executive Summary
+## 🌐 Network Setup — Important Assumption
 
-Remote border surveillance outposts and Border Outposts (BOPs) operate under extreme network bandwidth constraints (e.g. 64 kbps satellite links, tactical radio, or degraded 2G). Transmitting raw continuous CCTV feeds (65+ MB per minute) or raw telemetry over these channels is operationally impossible.
-
-**IBVAP** solves this challenge through a **Multi-Modal Domain-Specific Compression Suite**:
-1. **Metadata Compressor** (97.6% savings, 41.8x ratio, < 8 ms): Columnar delta-encoding, stream manifest decoupling, and categorical dictionary tokenization on surveillance CSV detections with 100% lossless fidelity.
-2. **Video Compressor** (99.88% savings, 835x ratio, ~1.0 s): Event-gated incident clip extraction (pre/post trigger burst) with adaptive resolution downscaling (360p) and frame decimation.
-3. **Snapshot Compressor** (85–89% savings, < 2 ms): High-efficiency forensic WebP quantization preserving high-frequency edges for ANPR plates and facial recognition.
-4. **Alert Compressor** (83.4% savings, 50 µs): Compact 36-byte binary C-struct serialization for tactical satellite radio short-burst messaging.
+> **Note:** The system assumes high-speed **Optical Fiber Cable (OFC)** connectivity is available along the border for communication between surveillance points and the central/cloud infrastructure. This provides high-bandwidth and low-latency connectivity for normal system operation.
 
 ---
 
-## 📊 Measured Compression & Bandwidth Audit
+## 🔗 Quick Links & Media
 
-Measured on actual surveillance CCTV feed and reference telemetry (655 detection records):
-
-| Surveillance Modality | Specialized Compressor | Raw Original Size | Compressed Size | Reduction Ratio | Bandwidth Saved | Latency |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Detection Metadata (CSV)** | `backend/metadata_compressor.py` | **72.14 KB** | **1.72 KB** | **41.87x** | **97.61%** | **7.9 ms** |
-| **CCTV Incident Video** | `backend/video_compressor.py` | **65.17 MB** | **0.08 MB (81 KB)** | **835.0x** | **99.88%** | **1.07 s** |
-| **Forensic Face Crop** | `backend/snapshot_compressor.py` | **866 Bytes** | **104 Bytes** | **8.33x** | **87.99%** | **< 2 ms** |
-| **Forensic License Plate** | `backend/snapshot_compressor.py` | **1,650 Bytes** | **240 Bytes** | **6.88x** | **85.45%** | **< 2 ms** |
-| **Emergency Breach Alert** | `backend/alert_compressor.py` | **217 Bytes** | **36 Bytes** | **6.03x** | **83.41%** | **~50 µs** |
-| **OVERALL SYSTEM TOTAL** | **Full Multi-Modal Suite** | **65.25 MB** | **0.085 MB (85 KB)** | **767.6x** | **99.87%** | **Real-time** |
+* 📹 **Video Demo & Pitch:** [Watch Demo on YouTube](https://youtu.be/1okjnzSJWbU?si=OLqSf2DyF5jP6sXB)
+* 📄 **Complete Project Report:** [Read Full Technical Report (PDF)](https://drive.google.com/drive/folders/1oznVKYI14lnGX_xuyjn0SQ1rodcpV4Jk?usp=drive_link)
 
 ---
 
-## 🗂️ Clean Project Directory Structure
+## 🌟 Key Highlights
 
+* 🎥 **Dual-Sensor Surveillance:** Combines CCTV and radar for visual, positional, and movement intelligence.
+* 🤖 **AI-Based Detection & Tracking:** YOLO detects objects while ByteTrack maintains consistent object identities across frames.
+* 📡 **Radar Intelligence:** Tracks target position, range, direction, speed, and movement zones independently.
+* 🧠 **Behavior Analysis:** AI analyzes movement patterns to identify potentially suspicious activity.
+* 🔐 **Data Integrity:** Event metadata is protected using SHA-256 cryptographic hashing.
+* 💾 **Edge-First Processing:** Critical detection and tracking happen locally before data is synchronized with the cloud.
+* ♻️ **Persistent Local Buffer:** Temporary connectivity or sensor failures do not immediately interrupt surveillance operations.
+* ☁️ **Asynchronous Cloud Sync:** Buffered records are automatically replicated to AWS when connectivity is restored.
+* 🚨 **Real-Time Alerts:** Suspicious events can be generated at the edge without waiting for cloud processing.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                    ┌──────────────────┐
+                    │  CAMERA PIPELINE │
+                    │    Independent   │
+                    └────────┬─────────┘
+                             │
+                        Image Stream
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │                  │
+                    │ BACKEND / EDGE   │
+                    │    PROCESSING    │
+                    │                  │
+                    │ • Camera Data    │
+                    │ • Radar Data     │
+                    │ • Object Data    │
+                    │ • Radar IDs      │
+                    │ • Timestamps     │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │ SENSOR FUSION & AI   │
+                  │                      │
+                  │ Camera + Radar Data  │
+                  │        ↓             │
+                  │ Combined Object      │
+                  │        ↓             │
+                  │ Behavior Analysis    │
+                  │        ↓             │
+                  │ 3D CNN / AI          │
+                  │        ↓             │
+                  │ Normal / Suspicious  │
+                  └──────────┬───────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │ METADATA FORMATION   │
+                  │                      │
+                  │ Event ID             │
+                  │ Timestamp            │
+                  │ Location             │
+                  │ Object ID            │
+                  │ Threat Level         │
+                  │ Radar ID             │
+                  │ Image Data           │
+                  │ SHA-256 Hash         │
+                  └──────────┬───────────┘
+                             │
+                    ┌────────┴────────┐
+                    │                 │
+                    ▼                 ▼
+          ┌─────────────────┐  ┌──────────────────┐
+          │ BLOCKCHAIN      │  │ LOCAL CACHE /    │
+          │ LAYER           │  │ BUFFER           │
+          │                 │  │                  │
+          │ Create Block    │  │ Event Data       │
+          │ Generate Hash   │  │ Images           │
+          │ Validate Block  │  │ Radar ID         │
+          │ Immutable Ledger│  │ Metadata         │
+          └────────┬────────┘  │ Temporary Buffer │
+                   │           └────────┬─────────┘
+                   │                    │
+                   └────────┬───────────┘
+                            ▼
+                    ┌────────────────┐
+                    │   SYNC ENGINE  │
+                    │                │
+                    │ Monitor Data   │
+                    │ Manage Queues  │
+                    │ Handle Failures│
+                    └───────┬────────┘
+                            │
+              ┌─────────────┴─────────────┐
+              │                           │
+              ▼                           ▼
+      ┌─────────────────┐       ┌─────────────────┐
+      │ PRIMARY PIPELINE│       │ RECOVERY        │
+      │ Current Data    │       │ PIPELINE        │
+      │ Immediate Upload│       │ Pending Events  │
+      └────────┬────────┘       │ Recovery Upload │
+               │                └────────┬────────┘
+               └──────────────┬──────────┘
+                              ▼
+                    ┌──────────────────┐
+                    │   AWS CLOUD      │
+                    │                  │
+                    │ S3 → Images /    │
+                    │      Video       │
+                    │                  │
+                    │ DynamoDB →       │
+                    │ Metadata / Events│
+                    └──────────────────┘
 ```
-ibvap_surveillance/
-│
-├── backend/                                # Core Engine & Compression Modules
-│   ├── alert_compressor.py                 # 36-Byte Binary Satcom Alert Compressor
-│   ├── metadata_compressor.py              # Delta-Time + Columnar + Dict CSV Compressor
-│   ├── snapshot_compressor.py              # Forensic WebP Faces/Plates Compressor
-│   ├── video_compressor.py                 # Event-Gated Adaptive Bitrate Video Compressor
-│   ├── cloud_sync_engine.py                # Priority Queue Sync Agent (Alerts > Meta > Snaps > Video)
-│   ├── cloud_server.py                     # Central Ingestion REST API & Web Dashboard (Port 5050)
-│   ├── database.py                         # Edge SQLite Surveillance Database Manager
-│   ├── schema.sql                          # Edge Surveillance DB DDL Schema
-│   ├── view_db.py                          # Unified DB Inspector (Edge & Cloud DBs)
-│   │
-│   ├── data/
-│   │   ├── sample_metadata.csv             # 655-row Reference Telemetry CSV
-│   │   └── sample_metadata.csv.ibmd        # Lossless compressed binary metadata payload
-│   │
-│   ├── media/
-│   │   ├── snapshots/                      # Raw crops (.jpg) & optimized crops (.webp)
-│   │   └── recordings/                     # Extracted incident evidence clips (.mp4)
-│   │
-│   ├── cloud_storage/                      # Central cloud storage for ingested media
-│   ├── cloud_surveillance.db               # Central Cloud Ingest Database
-│   └── ibvap_surveillance.db               # Edge Node Local Surveillance Database
-│
-├── tests/                                  # Automated Test Suites
-│   ├── test_compression_suite.py           # Multi-Modal Compression Unit Tests (4/4 Passing)
-│   └── test_database.py                    # Edge Database Unit Tests
-│
-├── web_ui/                                 # Operator Visual Dashboards
-│   ├── backend_dashboard.html              # Edge Station Surveillance HTML Console
-│   └── border_cctv_simulator.html          # Virtual CCTV Camera Feed Simulator HTML
-│
-├── border_checkpost_raw_feed.mp4           # Reference 1080p CCTV Footage (68 MB)
-├── real_human_surveillance.avi             # Reference Human Detection Surveillance Clip (8 MB)
-│
-├── run_cloud_sync_demo.py                  # One-Click Multi-Modal Compression & Cloud Sync Runner
-├── run_live_pipeline.py                    # Live Video -> AI Detection -> Edge DB -> Cloud Sync
-├── requirements.txt                        # Python Dependencies
-└── README.md                               # System Documentation & Usage Guide
+---
+
+## 🔄 How the Workflow Works
+
+### 1. 🎥 Camera Pipeline – Visual Intelligence
+
+The camera pipeline analyzes the border environment using computer vision. **YOLO** detects people and vehicles, while **ByteTrack** maintains consistent object identities across video frames. License plate regions are extracted from detected vehicles and processed using **OCR** to obtain plate numbers. Vehicle information can then be verified against authorization or permit records.
+
+### 2. 📡 Radar Pipeline – Movement Intelligence
+
+The radar pipeline independently tracks targets and provides movement information such as position, range, direction, speed, movement path, and detection zone. Each target receives a unique **Radar ID**, separate from the camera or vehicle tracking ID. This allows radar-based monitoring to continue even when the corresponding camera feed is temporarily unavailable.
+
+### 3. 🧠 Edge Processing & Sensor Fusion
+
+The edge processor receives information from both camera and radar pipelines. Object data, Radar IDs, timestamps, and movement information are correlated to build a unified representation of each detected target. The combined data is then analyzed by the AI layer to identify normal or potentially suspicious activity.
+
+### 4. 🚨 Event & Metadata Formation
+
+When relevant or suspicious activity is detected, the system generates a structured security event. Each event can contain the **Event ID, timestamp, location or zone, Object ID, Radar ID, object type, speed, license plate information, threat status, and supporting image or video reference**.
+
+A **SHA-256 hash** is also generated to provide an integrity fingerprint for the recorded event data.
+
+### 5. 🔐 Data Integrity & Persistent Local Buffer
+
+Event records are processed through the integrity layer and maintained in a **persistent local buffer**. The buffer can temporarily store event metadata, images, radar information, and other locally available evidence during temporary network or connectivity interruptions.
+
+The system therefore does not depend entirely on continuous cloud connectivity for critical edge processing and event recording.
+
+### 6. 🔄 Synchronization & Recovery
+
+The **Sync Engine** continuously monitors stored data, manages upload queues, and handles failed transfers. Current events can follow the primary upload pipeline, while previously buffered events are handled through the recovery pipeline.
+
+When connectivity is restored, buffered records are **asynchronously replicated to the cloud** while live edge processing continues.
+
+### 7. ☁️ AWS Cloud Storage
+
+After synchronization, the processed data is stored in AWS for centralized access and long-term storage.
+
+**Amazon S3** stores images, video clips, and other evidence files, while **Amazon DynamoDB** stores structured security events, timestamps, target information, threat metadata, Radar IDs, and integrity hashes.
+
+This creates an end-to-end pipeline:
+
+**Detection → Tracking → Sensor Fusion → AI Analysis → Event Creation → Local Buffer → Synchronization → AWS Cloud**
+
+## 📊 Data Flow
+
+```text
+Raw Camera / Radar Data
+          ↓
+     Edge Processing
+          ↓
+Detection + Tracking
+          ↓
+Sensor Fusion
+          ↓
+AI Analysis
+          ↓
+Security Event
+          ↓
+Structured Metadata
+          ↓
+SHA-256 Integrity Hash
+          ↓
+Local Buffer
+          ↓
+Asynchronous Cloud Replication
+          ↓
+AWS S3 + DynamoDB
 ```
+
+The architecture reduces unnecessary transmission of raw data by allowing the edge layer to generate and store **compact structured metadata** for long-term analysis.
 
 ---
 
-## 🚀 Quickstart & Execution Guide
+## 🎯 Real-World Applications
 
-### 1. Install Dependencies
-```powershell
+* 🌐 International border monitoring
+* 🪖 Restricted military installations
+* 🏭 Critical infrastructure protection
+* 🚧 Restricted-entry zones
+* 🌙 Night-time surveillance
+* 🌫️ Low-visibility monitoring using radar-assisted tracking
+
+---
+
+## 🛠️ Technologies Used
+
+| Category        | Technologies                       | Purpose                                   |
+| --------------- | ---------------------------------- | ----------------------------------------- |
+| Computer Vision | OpenCV, YOLO, ByteTrack            | Object detection and tracking             |
+| OCR             | PaddleOCR / EasyOCR                | License plate recognition                 |
+| AI / ML         | PyTorch, 3D CNN                    | Behavioral analysis                       |
+| Radar           | Radar Tracking Module              | Range, speed, direction and zone tracking |
+| Edge Processing | Python, Industrial PC / NVIDIA GPU | Local real-time processing                |
+| Data Integrity  | SHA-256                            | Event integrity verification              |
+| Local Storage   | SSD / NVMe                         | Persistent local buffering                |
+| Cloud Storage   | AWS S3                             | Images, videos and evidence               |
+| Cloud Database  | AWS DynamoDB                       | Structured event metadata                 |
+| Connectivity    | Optical Fiber (OFC)                | High-speed network communication          |
+
+---
+Reliability & Fault Handling
+
+The system is designed to handle temporary component failures.
+
+Failure Scenario	            System Response
+Camera disconnected 	        Radar continues tracking
+Camera unavailable	            Radar data continues reaching backend
+Temporary data transfer issue	Data remains in local cache
+Pending events	                Added to recovery queue
+Connection restored	            Recovery pipeline uploads pending data
+Normal operation	            Primary pipeline uploads current events
+Cloud synchronization delay	    Local records remain available until synchronization
+
+This creates a persistent local buffer + asynchronous recovery architecture instead of depending entirely on uninterrupted cloud connectivity.
+---
+
+## 📁 Project Outputs
+
+The system generates multiple outputs during processing, including:
+
+* 🎥 Processed surveillance video
+* 📡 Radar tracking video
+* 📋 Surveillance metadata
+* 🚨 Security event records
+* 🚗 Vehicle tracking information
+* 🔤 License plate recognition results
+* 👤 Person authorization results
+* 💾 Locally buffered records for recovery
+
+---
+
+## ⚡ Quick Start
+
+### Prerequisites
+
+* Python 3.10+
+* NVIDIA GPU recommended for accelerated inference
+* Git
+* AWS account for cloud integration
+* Camera/radar input or sample datasets
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/tanishq13-tech/team-siryon
+
+cd border-surveillance-system
+
+# Create virtual environment
+python -m venv venv
+
+# Activate environment
+# Windows
+venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Run the End-to-End Compression & Cloud Sync Demo
-Launches the Cloud Ingestion Server, compresses all 4 modalities, uploads them, and prints the audit table:
-```powershell
-python run_cloud_sync_demo.py
+### Configuration
+
+Create the required configuration/environment file and provide:
+
+```text
+Camera configuration
+Radar configuration
+AWS configuration
+Storage paths
+Model paths
 ```
 
-### 3. Access the Live Web Dashboard
-Open your browser and navigate to:
-```
-http://localhost:5050
-```
-* View live compression gauges (99.87% saved).
-* Inspect all 655 decompressed telemetry rows stored in `cloud_surveillance.db`.
-* Trigger sync runs directly with interactive UI buttons.
+> **Security:** Never commit AWS access keys, passwords, tokens, or other secrets to GitHub. Store credentials through environment variables or an appropriate secrets-management mechanism.
 
-### 4. Run Automated Test Suites
-```powershell
-python tests/test_compression_suite.py
-python tests/test_database.py
+### Run
+
+```bash
+python main.py --config config/edge_config.yaml
 ```
 
-### 5. Run Live Edge Detection Pipeline
-Processes video frames, extracts crops, records to SQLite, and automatically syncs to cloud:
-```powershell
-python run_live_pipeline.py
-```
+---
 
-### 6. Inspect Databases
-View both Edge DB and Cloud Server DB tables:
-```powershell
-python backend/view_db.py --db=all
-```
-*(Options: `--db=edge`, `--db=cloud`, or `--db=all`)*
+## 🚀 Future Enhancements
+
+* Multi-camera and multi-radar coordination
+* Improved camera-radar target association
+* Advanced anomaly detection
+* Automated threat prioritization
+* Centralized real-time monitoring dashboard
+* Multi-site border deployment
+* Model optimization for edge devices
+* Improved long-term behavioral analytics
+
+---
+
+## 🏆 Project Goal
+
+The goal of this project is to build a **reliable, AI-powered and edge-first border surveillance architecture** where cameras provide visual intelligence, radar provides movement intelligence, AI identifies potentially suspicious behavior, and cloud infrastructure provides scalable long-term storage and analysis.
+
+The combination of **AI + Computer Vision + Radar + Edge Computing + Cloud + Secure Data Management** enables continuous monitoring while reducing dependence on uninterrupted cloud connectivity.
